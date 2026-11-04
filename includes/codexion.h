@@ -6,7 +6,7 @@
 /*   By: fgoncal2 <fgoncal2@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 20:04:20 by fgoncal2          #+#    #+#             */
-/*   Updated: 2026/11/03 20:29:46 by fgoncal2         ###   ########.fr       */
+/*   Updated: 2026/11/04 18:22:54 by fgoncal2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <limits.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <pthread.h>
+
+typedef struct s_simulation	t_simulation;
 
 typedef struct s_args
 {
@@ -31,6 +34,36 @@ typedef struct s_args
 	int		dongle_cooldown;
 	char	*scheduler;
 }	t_args;
+
+typedef struct s_dongle
+{
+	int				taken;
+	long			released_at;
+	pthread_mutex_t	lock;
+}	t_dongle;
+
+typedef struct s_coder
+{
+	pthread_t		thread;
+	int				id;
+	int				num_compiles;
+	long			last_compile_start_value;
+	pthread_mutex_t	compile_info_lock;
+	t_dongle		*left_dongle;
+	t_dongle		*right_dongle;
+	t_simulation	*simulation;
+}	t_coder;
+
+typedef struct s_simulation
+{
+	t_args			rules;
+	long			start_time;
+	t_dongle		*dongles;
+	t_coder			*coders;
+	pthread_mutex_t	print;
+	int				sim_over_bool;
+	pthread_mutex_t	sim_over_lock;
+}	t_simulation;
 
 int		parse_args(t_args *args, char **argv);
 int		check_scheduler(char *scheduler);

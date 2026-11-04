@@ -6,7 +6,7 @@
 /*   By: fgoncal2 <fgoncal2@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 20:04:20 by fgoncal2          #+#    #+#             */
-/*   Updated: 2026/11/03 20:13:05 by fgoncal2         ###   ########.fr       */
+/*   Updated: 2026/11/03 20:29:46 by fgoncal2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <limits.h>
+# include <sys/time.h>
+# include <unistd.h>
 
 typedef struct s_args
 {
@@ -30,9 +32,10 @@ typedef struct s_args
 	char	*scheduler;
 }	t_args;
 
-int	parse_args(t_args *args, char **argv);
-int	check_scheduler(char *scheduler);
-int	to_int(char *s, int *out);
-int	print_error(char *msg);
+int		parse_args(t_args *args, char **argv);
+int		check_scheduler(char *scheduler);
+int		to_int(char *s, int *out);
+int		print_error(char *msg);
+long	get_current_time(void);
 
 #endif

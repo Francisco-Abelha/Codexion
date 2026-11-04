@@ -6,7 +6,7 @@
 /*   By: fgoncal2 <fgoncal2@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 20:04:01 by fgoncal2          #+#    #+#             */
-/*   Updated: 2026/11/03 20:06:46 by fgoncal2         ###   ########.fr       */
+/*   Updated: 2026/11/03 20:12:31 by fgoncal2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ int	parse_args(t_args *args, char **argv)
 	if (!to_int(argv[2], &args->time_to_burnout))
 		return (print_error("invalid time to burnout"));
 	if (!to_int(argv[3], &args->time_to_compile))
-		return (print_error("Invalid time to compile"));
+		return (print_error("invalid time to compile"));
 	if (!to_int(argv[4], &args->time_to_debug))
-		return (print_error("Invalid time to debug"));
+		return (print_error("invalid time to debug"));
 	if (!to_int(argv[5], &args->time_to_refactor))
-		return (print_error("Invalid time to refactor"));
+		return (print_error("invalid time to refactor"));
 	if (!to_int(argv[6], &args->number_of_compiles_required))
-		return (print_error("Invalid number of compiles required"));
+		return (print_error("invalid number of compiles required"));
 	if (!to_int(argv[7], &args->dongle_cooldown))
-		return (print_error("Invalid time for dongle cooldown"));
+		return (print_error("invalid time for dongle cooldown"));
 	if (!(check_scheduler(argv[8])))
-		return (print_error("Scheduler method given not accepted"));
+		return (print_error("scheduler method given not accepted"));
 	args->scheduler = argv[8];
 	return (1);
 }

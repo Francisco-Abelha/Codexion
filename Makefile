@@ -7,7 +7,9 @@ INCLUDES = -Iincludes
 
 SRCS = $(SRC_DIR)/codexion.c \
 	   $(SRC_DIR)/parser.c \
-	   $(SRC_DIR)/utils.c
+	   $(SRC_DIR)/utils.c \
+	   $(SRC_DIR)/init.c \
+	   $(SRC_DIR)/cleanup.c
 
 OBJ_DIR = objects
 SRC_DIR = sources

@@ -6,7 +6,7 @@
 /*   By: fgoncal2 <fgoncal2@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 20:04:20 by fgoncal2          #+#    #+#             */
-/*   Updated: 2026/11/04 18:22:54 by fgoncal2         ###   ########.fr       */
+/*   Updated: 2026/11/07 16:41:16 by fgoncal2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,12 @@ int		check_scheduler(char *scheduler);
 int		to_int(char *s, int *out);
 int		print_error(char *msg);
 long	get_current_time(void);
+int		init_dongles(t_simulation *sim);
+int		init_coders(t_simulation *sim);
+void	destroy_dongles(t_simulation *sim, int count);
+void	destroy_coders(t_simulation *sim, int count);
+void	cleanup(t_simulation *sim);
+void	destroy_shared(t_simulation *sim);
+int		init_simulation(t_simulation *sim);
 
 #endif
